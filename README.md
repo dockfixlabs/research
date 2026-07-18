@@ -1,12 +1,26 @@
-﻿# DockFix Labs Research
+﻿# DockFix Labs Research — AI Agent Framework Security Audits
 
-Public security research on AI agent vulnerabilities. All findings are reproducible using [AgentGuard](https://github.com/dockfixlabs/agentguard) (LGPL v3).
+All audits performed with [AgentGuard](https://github.com/dockfixlabs/agentguard) v0.8.3 (LGPL v3).
 
-## Reports
+## Master Comparison — 5 AI Agent Frameworks
 
-- [LangChain Audit (July 2026)](./2026-07-langchain-audit.md) — 452 findings in 1,784 files. CVSS 10.0 in ShellToolMiddleware.
-- [CrewAI Audit (July 2026)](./2026-07-crewai-audit.md) — 391 findings in 84 files (19x density vs LangChain).
-- [Sovereign Audit 2026](./sovereign-audit-2026.md) — 6 frameworks, 6 novel attack vectors.
+| Framework | Stars | Files | Total Findings | CRITICAL | HIGH | Density (findings/file) | Key Risk |
+|-----------|-------|-------|---------------|----------|------|------------------------|----------|
+| **CrewAI** | 25K+ | 84 | 391 | — | — | **4.66** | Multi-agent collusion, memory poisoning |
+| **LlamaIndex** | 40K+ | 2,951 | 1,003 | 209 | 580 | 0.34 | Raw SQL execution, exec() in evaporate |
+| **LangChain** | 100K+ | 1,784 | 452 | — | — | 0.25 | CVSS 10.0 in ShellToolMiddleware |
+| **AutoGen** | 38K+ | 549 | 229 | — | — | 0.42 | Docker host mount, agent self-modification |
+| **Qwen-Agent** | 10K+ | 239 | 441 | — | — | 1.85 | Multi-agent loops, tool abuse |
+| **Haystack** | 19K+ | 1,600 | 214 (~75 effective) | 25 | 154 | **0.05** | Best security posture overall |
+
+## Individual Reports
+
+- [LangChain Audit (July 2026)](./2026-07-langchain-audit.md)
+- [CrewAI Audit (July 2026)](./2026-07-crewai-audit.md)
+- [LlamaIndex Audit (July 2026)](./tech_report_llamaindex.md)
+- [Haystack Audit (July 2026)](./tech_report_haystack.md)
+- [Sovereign Audit 2026](./sovereign-audit-2026.md) — 6 frameworks, 6 novel attack vectors
+- [PAPER: 6,173 Findings](./PAPER_6173_FINDINGS.md) — comprehensive vulnerability paper
 
 ## Active GHSAs
 
@@ -23,7 +37,7 @@ Public security research on AI agent vulnerabilities. All findings are reproduci
 
 ## Methodology
 
-AgentGuard v0.8.2 — 22 rules, CWE+CVSS mapped, OWASP ASI compliant.
+AgentGuard v0.8.3 — 22 rules, CWE+CVSS mapped, OWASP ASI compliant.
 88% precision measured on 50 independent samples.
 
 ## License
